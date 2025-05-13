@@ -1,31 +1,39 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>Emergency Medical Info</title>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Medical Info</title>
   <link rel="stylesheet" href="style.css">
 </head>
 <body>
-  <div class="container">
+  <div class="card">
     <h1>Medical Info</h1>
-    <div id="info"></div>
+    <div id="medicalData"></div>
   </div>
 
   <script>
-    const data = JSON.parse(localStorage.getItem('medicData'));
+    const params = new URLSearchParams(window.location.search);
+    const name = params.get("name");
+    const blood = params.get("blood");
+    const address = params.get("address");
+    const condition = params.get("condition");
+    const allergies = params.get("allergies");
+    const contact = params.get("contact");
 
-    if (data) {
-      document.getElementById('info').innerHTML = `
-        <p><strong>Name:</strong> ${data.name}</p>
-        <p><strong>Blood Group:</strong> ${data.bloodGroup}</p>
-        <p><strong>Allergies:</strong> ${data.allergies || 'None'}</p>
-        <p><strong>Conditions:</strong> ${data.conditions || 'None'}</p>
-        <p><strong>Medications:</strong> ${data.medications || 'None'}</p>
-        <p><strong>Emergency Contact:</strong> ${data.emergencyContact}</p>
+    const medicalData = document.getElementById("medicalData");
+
+    if (name && blood && address && condition && allergies && contact) {
+      medicalData.innerHTML = `
+        <p><strong>Name:</strong> ${name}</p>
+        <p><strong>Blood Group:</strong> ${blood}</p>
+        <p><strong>Address:</strong> ${address}</p>
+        <p><strong>Condition:</strong> ${condition}</p>
+        <p><strong>Allergies:</strong> ${allergies}</p>
+        <p><strong>Emergency Contact:</strong> ${contact}</p>
       `;
     } else {
-      document.getElementById('info').innerHTML = `<p>No data found. Please create your MedicAlert first.</p>`;
+      medicalData.innerHTML = `<p>No data found. Please create your MedicAlert first.</p>`;
     }
   </script>
 </body>

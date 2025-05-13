@@ -1,28 +1,19 @@
-document.getElementById('medicForm').addEventListener('submit', function(e) {
-    e.preventDefault();
-  
-    const userData = {
-      name: document.getElementById('name').value,
-      bloodGroup: document.getElementById('bloodGroup').value,
-      allergies: document.getElementById('allergies').value,
-      conditions: document.getElementById('conditions').value,
-      medications: document.getElementById('medications').value,
-      emergencyContact: document.getElementById('emergencyContact').value
-    };
-  
-    localStorage.setItem('medicData', JSON.stringify(userData));
-  
-    const dataUrl = `${window.location.origin}/medical-info.html`;
-generateQR(dataUrl);
+document.getElementById("medicForm").addEventListener("submit", function (e) {
+  e.preventDefault();
 
-    generateQR(dataUrl);
-  });
-  
-  function generateQR(data) {
-    const qrDiv = document.getElementById('qrResult');
+  const name = document.getElementById("name").value;
+  const blood = document.getElementById("blood").value;
+  const address = document.getElementById("address").value;
+  const condition = document.getElementById("condition").value;
+  const allergies = document.getElementById("allergies").value;
+  const contact = document.getElementById("contact").value;
+
+  const url = `${window.location.origin}/medical-info.html?name=${encodeURIComponent(name)}&blood=${encodeURIComponent(blood)}&address=${encodeURIComponent(address)}&condition=${encodeURIComponent(condition)}&allergies=${encodeURIComponent(allergies)}&contact=${encodeURIComponent(contact)}`;
+
+  QRCode.toCanvas(document.createElement('canvas'), url, function (error, canvas) {
+    if (error) console.error(error);
+    const qrDiv = document.getElementById("qrcode");
     qrDiv.innerHTML = '';
-    const img = document.createElement('img');
-    img.src = `https://api.qrserver.com/v1/create-qr-code/?data=${encodeURIComponent(data)}&size=200x200`;
-    qrDiv.appendChild(img);
-  }
-  
+    qrDiv.appendChild(canvas);
+  });
+});

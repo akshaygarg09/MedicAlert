@@ -1,25 +1,26 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>MedicAlert - Emergency Medical Info</title>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>MedicAlert</title>
   <link rel="stylesheet" href="style.css">
 </head>
 <body>
-  <div class="container">
-    <h1>MedicAlert</h1>
-    <form id="medicForm">
-      <input type="text" id="name" placeholder="Full Name" required>
-      <input type="text" id="bloodGroup" placeholder="Blood Group (e.g. B+)" required>
-      <input type="text" id="allergies" placeholder="Allergies">
-      <input type="text" id="conditions" placeholder="Existing Conditions">
-      <input type="text" id="medications" placeholder="Medications">
-      <input type="text" id="emergencyContact" placeholder="Emergency Contact" required>
-      <button type="submit">Generate QR Code</button>
-    </form>
-    <div id="qrResult"></div>
-  </div>
+  <h1>MedicAlert</h1>
+  <form id="medicForm">
+    <input type="text" id="name" placeholder="Name" required>
+    <input type="text" id="blood" placeholder="Blood Group" required>
+    <input type="text" id="address" placeholder="Address" required>
+    <input type="text" id="condition" placeholder="Medical Condition" required>
+    <input type="text" id="allergies" placeholder="Allergies" required>
+    <input type="text" id="contact" placeholder="Emergency Contact" required>
+    <button type="submit">Generate QR Code</button>
+  </form>
+
+  <div id="qrcode"></div>
+
+  <script src="https://cdn.jsdelivr.net/npm/qrcode/build/qrcode.min.js"></script>
   <script src="script.js"></script>
 </body>
 </html>
