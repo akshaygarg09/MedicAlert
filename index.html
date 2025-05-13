@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>MedicAlert - Emergency Medical Info</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <div class="container">
+    <h1>MedicAlert</h1>
+    <form id="medicForm">
+      <input type="text" id="name" placeholder="Full Name" required>
+      <input type="text" id="bloodGroup" placeholder="Blood Group (e.g. B+)" required>
+      <input type="text" id="allergies" placeholder="Allergies">
+      <input type="text" id="conditions" placeholder="Existing Conditions">
+      <input type="text" id="medications" placeholder="Medications">
+      <input type="text" id="emergencyContact" placeholder="Emergency Contact" required>
+      <button type="submit">Generate QR Code</button>
+    </form>
+    <div id="qrResult"></div>
+  </div>
+  <script src="script.js"></script>
+</body>
+</html>

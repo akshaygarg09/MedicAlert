@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Emergency Medical Info</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <div class="container">
+    <h1>Medical Info</h1>
+    <div id="info"></div>
+  </div>
+
+  <script>
+    const data = JSON.parse(localStorage.getItem('medicData'));
+
+    if (data) {
+      document.getElementById('info').innerHTML = `
+        <p><strong>Name:</strong> ${data.name}</p>
+        <p><strong>Blood Group:</strong> ${data.bloodGroup}</p>
+        <p><strong>Allergies:</strong> ${data.allergies || 'None'}</p>
+        <p><strong>Conditions:</strong> ${data.conditions || 'None'}</p>
+        <p><strong>Medications:</strong> ${data.medications || 'None'}</p>
+        <p><strong>Emergency Contact:</strong> ${data.emergencyContact}</p>
+      `;
+    } else {
+      document.getElementById('info').innerHTML = `<p>No data found. Please create your MedicAlert first.</p>`;
+    }
+  </script>
+</body>
+</html>
